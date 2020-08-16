@@ -1,0 +1,14 @@
+﻿<div class="btn-group">
+    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+        @foreach (LoaiOutput loaiItems in ViewBag.LoaiShop)
+        {
+                @Ajax.ActionLink(loaiItems.Ten, "TraCuuTheoLoaiAjax", "HangHoa", new { id = loaiItems.ID },new AjaxOptions
+           {
+               UpdateTargetId = "spContainer",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "GET"
+           }, new { @class = "dropdown-item" })
+        }
+    </div>
+</div>

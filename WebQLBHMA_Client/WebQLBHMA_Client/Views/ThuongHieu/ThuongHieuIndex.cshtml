@@ -1,0 +1,16 @@
+﻿@model List<ThuongHieuOutput>
+
+@foreach (ThuongHieuOutput item in Model)
+{
+    <div class="col-sm-6 col-md-6 col-lg-3 mb-3 mb-lg-0" data-aos="fade" data-aos-delay="">
+        <a class="block-2-item" href="#">
+            <figure class="image">
+                <img src="~/images/ThuongHieu/@item.Hinhs[0]" alt="" class="img-fluid" style="width:100%; height:500px">
+            </figure>
+            <div class="text">
+                <span class="text-uppercase">Collections</span>
+                <h3>@item.Ten</h3>
+            </div>
+        </a>
+    </div>
+}

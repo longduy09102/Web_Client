@@ -1,0 +1,35 @@
+﻿@model HangHoaInput
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_QLBHMALayout.cshtml";
+}
+
+
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tank Top T-Shirt</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/images/SanPham/@Model.Hinhs[0]" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-black">@Model.Ten</h2>
+                <p>@Model.MoTa</p>
+                <p class="mb-4">@Model.ThongSoKyThuat</p>
+                <p><strong class="text-primary h4">@Model.GiaBan.ToString("#,### VNĐ")</strong></p>
+                @Html.Partial("_AddToCartPartial",Model.ID)
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("_LoaiIndex", "Loai")
+

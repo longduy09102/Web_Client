@@ -1,0 +1,18 @@
+﻿@model List<HangHoaOutput>
+@foreach (HangHoaOutput item in ViewBag.HangHoa)
+{
+    string lienKet = Url.Action("ChiTiet", "HangHoa", new { id = item.ID });
+    <div class="item">
+        <div class="block-4 text-center">
+            <figure class="block-4-image">
+                <img src="~/images/SanPham/@item.Hinhs[0]" alt="Image placeholder" class="img-fluid">
+            </figure>
+            <div class="block-4-text p-4">
+                <h3><a href="@lienKet">@item.Ten</a></h3>
+                <p class="mb-0">Finding perfect t-shirt</p>
+                <p class="text-primary font-weight-bold">@item.GiaBan.ToString("#,### VNĐ")</p>
+            </div>
+        </div>
+    </div>
+}
+

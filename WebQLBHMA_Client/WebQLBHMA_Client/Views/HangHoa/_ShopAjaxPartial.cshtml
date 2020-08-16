@@ -1,0 +1,72 @@
+﻿<div id="spContainer">
+    @using X.PagedList.Mvc;
+    @using X.PagedList;
+    @using X.PagedList.Mvc.Common;
+    <div class="row">
+        <div class="col-md-12 mb-5">
+            <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
+            <div class="d-flex">
+                <div class="dropdown mr-1 ml-md-auto">
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Latest
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                        <a class="dropdown-item" href="#">Men</a>
+                        <a class="dropdown-item" href="#">Women</a>
+                        <a class="dropdown-item" href="#">Children</a>
+                    </div>
+                </div>
+                @Html.Action("_LoaiAjaxPartial", "Loai")
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        @foreach (HangHoaOutput hangHoaItem in ViewBag.OnePageOfData)
+        {
+            string lienKet = Url.Action("ChiTiet", "HangHoa", new { id = hangHoaItem.ID });
+            <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                        <a href="shop-single.html"><img src="~/images/SanPham/@hangHoaItem.Hinhs[0]" alt="Image placeholder" class="img-fluid"></a>
+                    </figure>
+                    <div class="block-4-text p-4">
+                        <h3><a href="@lienKet">@hangHoaItem.Ten</a></h3>
+                        <p class="mb-0">Finding perfect t-shirt</p>
+                        <p class="text-primary font-weight-bold">@hangHoaItem.GiaBan.ToString("#,### VNĐ")</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row" data-aos="fade-up">
+        <div class="col-md-12 text-center">
+            <div class="site-block-27">
+                @{
+                    var onePageOfData = (IPagedList)ViewBag.OnePageOfData;
+                }
+                @{
+                    if (ViewBag.LoaiID != null)
+                    {
+                        @Html.PagedListPager(onePageOfData, p => Url.Action("TraCuuTheoLoaiAjax", new { id = ViewBag.LoaiID, Page = p }),
+                       PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(ajaxOptions: new AjaxOptions
+                       {
+                           UpdateTargetId = "spContainer",
+                           InsertionMode = InsertionMode.Replace,
+                           HttpMethod = "GET"
+                       }))
+                    }
+                    else
+                    {
+                        @Html.PagedListPager(onePageOfData, p => Url.Action("ShopAjax", new { Page = p }),
+                PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(ajaxOptions: new AjaxOptions
+                {
+                    UpdateTargetId = "spContainer",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET"
+                }))
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
