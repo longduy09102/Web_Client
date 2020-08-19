@@ -622,10 +622,11 @@
     <Content Include="Views\Loai\_LoaiAjaxPartial.cshtml" />
     <Content Include="Views\HangHoa\ChiTiet.cshtml" />
     <Content Include="Views\HangHoa\_AddToCartPartial.cshtml" />
+    <Content Include="Views\CartAjax\Index.cshtml" />
+    <Content Include="Views\CartAjax\_IndexPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CartAjax\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
